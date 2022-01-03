@@ -11,10 +11,9 @@ The states (State machine) for A given Employee are:
     APPROVED
     ACTIVE
 Initially when an employee is added it will be assigned "ADDED" state automatically.
-
 The allowed state transitions are:
-
-ADDED -> IN-CHECK *-> APPROVED -> ACTIVE
+	
+	ADDED -> IN-CHECK *-> APPROVED -> ACTIVE
 
 Furthermore, IN-CHECK state is special and has the following orthogonal child substates:
 
@@ -36,7 +35,7 @@ Java 11, Spring-boot and Spring State Machine
 
 - Or you can use docker, first run  `docker build -t workmotion-employee.jar . ` , then run the docker by `docker run -p 8082:8082 workmotion-employee.jar` 
 
-- Go to http://localhost:8082/api-docs.html to check APIs documentation (build by ) 
+- Go to http://localhost:8082/api-docs.html to check APIs documentation (build using OpenAPI Swagger ) 
 - To create an employee, use POST API http://localhost:8082/api/employee/create
 - To check employee info, use GET API http://localhost:8082/api/employee/info?id=EmployeeID
 - To change state for an employee, use POST API http://localhost:8082/api/employee/change
@@ -66,7 +65,7 @@ Java 11, Spring-boot and Spring State Machine
   ]
 }
 ```
-now let us use FINAL_APPROVE ( which suppose to move the state from APPROVED to ACTIVE), we will see the state does not change and history will show that action
+now let us use FINAL_APPROVE ( which is supposed to move the state from APPROVED to ACTIVE), we will see the state does not change and history will show that action
 ```JSON
 {
   "id": 1,
@@ -86,4 +85,6 @@ now let us use FINAL_APPROVE ( which suppose to move the state from APPROVED to 
   ]
 }
 ```
+# Testing
+
 - There is a unit test to test the StateMachine configuration and another test to test calling API and the expected states after that.
